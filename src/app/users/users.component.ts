@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {UserComponent} from "./user/user.component";
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-users',
@@ -8,7 +9,9 @@ import {UserComponent} from "./user/user.component";
   templateUrl: './users.component.html',
   imports: [
     NgForOf,
-    UserComponent
+    UserComponent,
+    RouterLink,
+    RouterOutlet
   ],
   styleUrls: ['./users.component.css']
 })
