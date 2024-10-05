@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root', // Ensures the guard is provided at the root level
+})
 export class ServersService {
   private servers = [
     {

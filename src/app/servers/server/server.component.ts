@@ -12,23 +12,26 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ServerComponent implements OnInit {
   server: { id: number, name: string, status: string } | any;
 
-  constructor(private serversService: ServersService, private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    const id: string = this.route.snapshot.params['id'];
-    if (id) {
-      this.server = this.serversService.getServer(+id);
+    this.route.data.subscribe((data) => {
+      this.server = data['server'];
+    });
 
-    }
 
-    this.route.params.subscribe(params => {
-      const id: string = this.route.snapshot.params['id'];
-      if (id) {
-        this.server = this.serversService.getServer(+id);
-      }
-
-    })
+    // const id: string = this.route.snapshot.params['id'];
+    // if (id) {
+    //   this.server = this.serversService.getServer(+id);
+    // }
+    //
+    // this.route.params.subscribe(params => {
+    //   const id: string = this.route.snapshot.params['id'];
+    //   if (id) {
+    //     this.server = this.serversService.getServer(+id);
+    //   }
+    // })
 
   }
 

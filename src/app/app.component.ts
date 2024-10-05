@@ -13,7 +13,7 @@ import {AuthService} from "./auth.service";
   imports: [RouterOutlet, HomeComponent, UsersComponent, ServersComponent, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [ServersService]
+  providers: []
 })
 export class AppComponent {
   title = 'angular-schwarzmuller-router';

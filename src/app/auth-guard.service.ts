@@ -1,6 +1,6 @@
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
+  CanActivate, CanActivateChild, GuardResult, MaybeAsync,
   Router,
   RouterStateSnapshot
 } from "@angular/router";
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root', // Ensures the guard is provided at the root level
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild{
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -27,5 +27,9 @@ export class AuthGuard implements CanActivate {
         return false;
       }
     });
+  }
+
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+    return this.canActivate(childRoute, state);
   }
 }
